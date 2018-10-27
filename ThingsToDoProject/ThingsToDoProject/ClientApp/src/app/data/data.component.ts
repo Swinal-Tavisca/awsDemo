@@ -40,7 +40,7 @@ export class DataComponent implements OnInit {
 }
 
   ngOnInit() {
-    this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/'+ this.airportServices.area + '/' + this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.type).
+    this.http.get('api/Data/'+ this.airportServices.area + '/' + this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.type).
     subscribe((response)=>
     {
       this.response = response;
