@@ -27,7 +27,7 @@ export class SideSectionComponent implements OnInit {
 }
 
 GetAllDataOfParticularPlace(){
-  this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/place/'+ this.location + '/'+this.PlaceId )
+  this.http.get('api/Data/place/'+ this.location + '/'+this.PlaceId )
   .subscribe(
     data => this.response=data,
     error => this.response=false,
