@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
      this.DepartureDateTime = this.route.snapshot.queryParamMap.get('DepartureDateTime');
      this.arrivalterminal = this.route.snapshot.queryParamMap.get('ArrivalTerminal');
      this.departureterminal = this.route.snapshot.queryParamMap.get('DepartureTerminal');
-    this.http.get('http://thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/search' +'/'+ this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.airportServices.getInput()).
+    this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/search' +'/'+ this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.airportServices.getInput()).
    subscribe((response)=>
    {
      this.response=response;
