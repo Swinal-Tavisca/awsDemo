@@ -31,7 +31,7 @@ data:any;
   }
   getDataOfParticularPlace(marker:any,placeid:string)
   {
-    this.http.get('http://thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/place/'+ this.location + '/'+ placeid )
+    this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/place/'+ this.location + '/'+ placeid )
     .subscribe((response) => {
       this.res=response;
       marker.image=this.res.image;
@@ -68,12 +68,12 @@ response: any;
     this.isDataLoaded=true;
     this.city= this.route.snapshot.queryParamMap.get('location');
 
-    this.http.get('http://thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/position/'+this.city).subscribe((response)=>{
+    this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/position/'+this.city).subscribe((response)=>{
       this.Getresponse = response;
       this.lat =  this.Getresponse.latitudePosition;
       this.lng=this.Getresponse.longitudePosition; 
     })
-    this.http.get('http://thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/'+ this.airportServices.area +'/'+ this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.airportServices.getInput()).
+    this.http.get('thingstodoproject-prod.ap-south-1.elasticbeanstalk.com/api/Data/'+ this.airportServices.area +'/'+ this.location +'/' + this.arrivalDatetime +'/' +  this.DepartureDateTime +'/' + this.airportServices.getInput()).
   subscribe((response)=>
   {
   this.response = response;

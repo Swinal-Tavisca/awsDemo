@@ -24,6 +24,7 @@ namespace ThingsToDoProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IGetLatitudeLongitude, GetLatitudeLongitude>();
@@ -44,12 +45,26 @@ namespace ThingsToDoProject
             {
                 client.BaseAddress = new Uri("https://maps.googleapis.com");
             });
+
             services.AddSingleton<IConfiguration>(Configuration);
+            //services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            //{
+            //    builder.AllowAnyOrigin()
+            //           .AllowAnyMethod()
+            //           .AllowAnyHeader();
+            //}));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            //app.UseCors(builder =>builder.WithOrigins("thingstodoproject-prod.ap-south-1.elasticbeanstalk.com"));
+            //options.AddPolicy("AllowAllOrigins",builder =>{
+            //    builder.AllowAnyOrigin();
+            //});
+            app.UseCors(builder =>builder.WithOrigins("thingstodoproject-prod.ap-south-1.elasticbeanstalk.com").AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
