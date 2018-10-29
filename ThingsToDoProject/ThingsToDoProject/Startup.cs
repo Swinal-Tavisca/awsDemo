@@ -24,7 +24,7 @@ namespace ThingsToDoProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            //services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IGetLatitudeLongitude, GetLatitudeLongitude>();
@@ -35,6 +35,12 @@ namespace ThingsToDoProject
             services.AddSingleton<IGetDistanceTime, GetDistanceTimeOfParticularPlace>();
             services.AddSingleton<IGetSearch, GetSearchData>();
 
+             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -63,8 +69,8 @@ namespace ThingsToDoProject
             //options.AddPolicy("AllowAllOrigins",builder =>{
             //    builder.AllowAnyOrigin();
             //});
-            app.UseCors(builder =>builder.WithOrigins("http://ec2-13-233-74-177.ap-south-1.compute.amazonaws.com").AllowAnyHeader());
-
+            //app.UseCors(builder =>builder.WithOrigins("http://ec2-13-233-74-177.ap-south-1.compute.amazonaws.com").AllowAnyHeader());
+             app.UseCors("MyPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
