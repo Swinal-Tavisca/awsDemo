@@ -63,7 +63,7 @@ namespace ThingsToDoProject
             //options.AddPolicy("AllowAllOrigins",builder =>{
             //    builder.AllowAnyOrigin();
             //});
-            app.UseCors(builder =>builder.WithOrigins("thingstodoproject-prod.ap-south-1.elasticbeanstalk.com").AllowAnyHeader());
+            app.UseCors(builder =>builder.WithOrigins("http://ec2-13-233-74-177.ap-south-1.compute.amazonaws.com").AllowAnyHeader());
 
             if (env.IsDevelopment())
             {
